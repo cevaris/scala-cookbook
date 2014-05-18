@@ -65,12 +65,8 @@ val name = "Adam"
 val age = 20
 val weight = 200.3
 println(s"$name is $age years old, and weighs $weight pounds.")
-println(s"Age next year: ${(math floor (age / 10.0 + 22))}")
-
-
-
-
-
+println(s"Age next year: ${(math floor (age / 10.1 + 22))}")
+println(f"Age next year: ${(age / 10.1 + 22)}%.2f")
 
 
 
