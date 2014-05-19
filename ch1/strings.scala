@@ -113,10 +113,22 @@
 
 
 
-def toLower(c: Char): Char = (c.toByte+32).toChar
-var result = "HELLO".map(toLower)
-println(result)
+// def toLower(c: Char): Char = (c.toByte+32).toChar
+// var result = "HELLO".map(toLower)
+// println(result)
 
+
+
+
+
+
+
+def encode(c: Char): Char = (c.toByte+5).toChar
+def decode(c: Char): Char = (c.toByte-5).toChar
+var secret = "HELLO".map(encode)
+println(secret)
+var truth = secret.map(decode)
+println(truth)
 
 
 
