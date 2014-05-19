@@ -61,12 +61,63 @@
 
 
 
-val name = "Adam"
-val age = 20
-val weight = 200.3
-println(s"$name is $age years old, and weighs $weight pounds.")
-println(s"Age next year: ${(math floor (age / 10.1 + 22))}")
-println(f"Age next year: ${(age / 10.1 + 22)}%.2f")
+// val name = "Adam"
+// val age = 20
+// val weight = 200.3
+// println(s"$name is $age years old, and weighs $weight pounds.")
+// println(s"Age next year: ${(math floor (age / 10.1 + 22))}")
+// println(f"Age next year: ${(age / 10.1 + 22)}%.2f")
+
+
+
+
+
+// "hello, world".map(_.toUpper).split(',').foreach(x => println(x.trim))
+
+
+
+
+
+// val result = for {
+// c <- "hello, world".filter(_ != 'l')
+// } yield c.toUpper
+// println(result)
+
+
+
+
+
+// val result = "HELLO".map(c => (c.toByte+32).toChar)
+// println(result)
+
+
+
+
+
+// val result = "HELLO".map{ c =>
+//   (c.toByte+32).toChar
+// }
+// println(result)
+
+
+
+
+
+// val result = "HELLO".map{ c =>
+//   c.toByte+32
+// }
+// println(result)
+
+
+
+
+
+
+def toLower(c: Char): Char = (c.toByte+32).toChar
+var result = "HELLO".map(toLower)
+println(result)
+
+
 
 
 
