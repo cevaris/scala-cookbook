@@ -9,7 +9,7 @@
 
 
 
-def calcPi(iterations:Int) = {
+def calcPi(iterations:Int, f:BigDecimal => Unit ) = {
   var estimate = BigDecimal(3)
   var position = BigInt(2)
 
@@ -28,9 +28,8 @@ def calcPi(iterations:Int) = {
       estimate -= step
     }
 
-    printf(s"\r$estimate")
-  
+    f(estimate)
   }
 }
 
-calcPi(1*100*100)
+calcPi(1*100*100, x => printf(s"\r$x"))
