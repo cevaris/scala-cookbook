@@ -9,27 +9,47 @@
 
 
 
-def calcPi(iterations:Int, f:BigDecimal => Unit ) = {
+// def calcPi(iterations:Int, f:BigDecimal => Unit ): BigDecimal  = {
+//   var estimate = BigDecimal(3)
+//   var position = 2
+
+//   for( iter <- 0 to iterations ){
+
+//     val step = BigDecimal(4.0)/BigDecimal(BigInt(position)*BigInt(position+1)*BigInt(position+2))
+
+//     iter % 2 match {
+//       case 0 => estimate += step
+//       case _ => estimate -= step
+//     }
+
+//     position = position+2
+
+//     f(estimate)    
+//   }
+//   estimate
+// }
+
+// calcPi(1*100*100, x => printf(s"\r$x"))
+
+
+def calcPi(iterations:Int): BigDecimal  = {
   var estimate = BigDecimal(3)
-  var position = BigInt(2)
+  var position = 2
 
-  for( iter <- 0 to iterations){
+  for( iter <- 0 to iterations ){
 
-    val d0:BigInt = position
-    val d1:BigInt = position+1
-    val d2:BigInt = position+2
-    position      = position+2
+    val step = BigDecimal(4.0)/BigDecimal(BigInt(position)*BigInt(position+1)*BigInt(position+2))
 
-    val step = BigDecimal(4.0)/BigDecimal(d0*d1*d2)
-
-    if(iter % 2 == 0){
-      estimate += step
-    } else {
-      estimate -= step
+    iter % 2 match {
+      case 0 => estimate += step
+      case _ => estimate -= step
     }
 
-    f(estimate)
+    position = position+2
+    printf(s"\r$estimate")
   }
+  println()
+  estimate
 }
 
-calcPi(1*100*100, x => printf(s"\r$x"))
+calcPi(1*100*100)
