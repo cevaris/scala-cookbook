@@ -179,20 +179,23 @@
 
 
 
-// implicit class StringUtils(s: String) {
-//   def lower = s.map(c => c.toLower)
-//   def parseBool:Boolean = s.trim.toLowerCase match {
-//     case "1" | "true" => true
-//     case _ => false
-//   }
-// }
-// println("TeST".lower)
+implicit class StringUtils(s: String) {
+  def lower = s.map(c => c.toLower)
+  def parseBool:Boolean = s.trim.toLowerCase match {
+    case "0" | "zero" | "" => false
+    case _ => true
+  }
+}
+println("TeST".lower)
 
-// assert("true".parseBool == true)
-// assert("True".parseBool == true)
-// assert("1 ".parseBool == true)
-// assert("Truee".parseBool == false)
-// assert("0".parseBool == false)
+assert("true".parseBool == true)
+assert("True".parseBool == true)
+assert("1 ".parseBool == true)
+assert("Truee".parseBool == true)
+assert("0".parseBool == false)
+assert("".parseBool == false)
+assert("zero".parseBool == false)
+assert("Zero".parseBool == false)
 
 
 
