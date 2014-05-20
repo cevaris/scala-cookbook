@@ -9,28 +9,29 @@
 
 
 
-val iterations = 100000000
+val iterations = 50*1000*1000
 var estimate = BigDecimal(3)
-var position = 2
+var position = BigInt(2)
 
 for( iter <- 0 to iterations){
 
-  val d0 = position
-  val d1 = position+1
-  val d2 = position+2
-  position += 3
+  val d0:BigInt = position
+  val d1:BigInt = position+1
+  val d2:BigInt = position+2
+  position      = position+2
 
-  // println(s"$d0 $d1 $d2 $position")
+  // println(s"$d0 $d1 $d2 $position ${d0*d1*d2}")
+  // println(d0*d1*d2)
+  val step = BigDecimal(4.0)/BigDecimal(d0*d1*d2)
+  // println(step)
 
-  println(BigDecimal(4.0/(d0*d1*d2)))
-
-  // if(iter % 2 == 0){
-  //   estimate += BigDecimal(4.0/(d0*d1*d2))
-  // } else {
-  //   estimate -= BigDecimal(4.0/(d0*d1*d2))
-  // }
+  if(iter % 2 == 0){
+    estimate += step
+  } else {
+    estimate -= step
+  }
 
   // println(estimate)
-  // printf(s"\r$estimate")
+  printf(s"\r$estimate")
   
 }
