@@ -123,12 +123,83 @@
 
 
 
-def encode(c: Char): Char = (c.toByte+5).toChar
-def decode(c: Char): Char = (c.toByte-5).toChar
-var secret = "HELLO".map(encode)
-println(secret)
-var truth = secret.map(decode)
-println(truth)
+// def encode(c: Char): Char = (c.toByte+5).toChar
+// def decode(c: Char): Char = (c.toByte-5).toChar
+// var secret = "HELLO".map(encode)
+// println(secret)
+// var truth = secret.map(decode)
+// println(truth)
+
+
+
+
+
+
+// val numPattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}".r
+// val valid_num = "123-123-1234"
+// val invalid_num = "123-12A-1234"
+// println(numPattern.findFirstIn(valid_num))
+// println(numPattern.findFirstIn(invalid_num).getOrElse("Could not find match"))
+
+
+
+
+
+
+
+
+// val numPattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}".r
+// val valid_num = "123-123-1234"
+// val invalid_num = "123-12A-1234"
+
+// numPattern.findFirstIn(valid_num) match {
+//   case Some(s) => println(s"Found Valid Number $s")
+//   case None    => println(s"Not valid number found")
+// }
+
+// numPattern.findFirstIn(invalid_num) match {
+//   case Some(s) => println(s"Found Valid Number $s")
+//   case None    => println(s"Not valid number found")
+// }
+
+
+
+
+
+
+
+val address = "431 Main Street".replaceAll("[0-9]", "-")
+println(address)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
