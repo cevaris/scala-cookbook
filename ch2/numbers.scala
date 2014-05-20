@@ -62,31 +62,74 @@
 
 
 
+def calcPi(): BigDecimal  = {
 
-implicit class StringToInt(s: String) {
-  def parseInt():Option[Int] = { 
-    try {
-      Some(s.toInt) 
-    } catch {
-    case e: NumberFormatException => None 
+  val stop:Int = 1*100*100
+
+  @annotation.tailrec
+  def go(iter:Int, position:BigInt, estimate:BigDecimal): BigDecimal = {
+    // if(iter >= stop) 
+    //   return estimate
+    // else
+    printf(s"\r$estimate")
+
+    val step:BigDecimal = BigDecimal(4.0)/BigDecimal(position*(position+1)*(position+2))
+
+    iter % 2 match {
+      case 0 => go(iter+1, position+2, (estimate += step))
+      case _ if iter >= stop => estimate
+      case _ => go(iter+1, position+2, (estimate -= step))
     }
   }
-}
 
-"100".parseInt() match {
-  case Some(n) => println(n)
-  case None => println("Boom! That wasn't a number.")
+  go(0, 2, BigDecimal(3))
 }
+calcPi()
 
-"100+".parseInt() match {
-  case Some(n) => println(n)
-  case None => println("Boom! That wasn't a number.")
-}
 
-"-1001".parseInt() match {
-  case Some(n) => println(n)
-  case None => println("Boom! That wasn't a number.")
-}
+
+
+
+
+
+
+// implicit class StringToInt(s: String) {
+//   def parseInt():Option[Int] = { 
+//     try {
+//       Some(s.toInt) 
+//     } catch {
+//     case e: NumberFormatException => None 
+//     }
+//   }
+// }
+
+// "100".parseInt() match {
+//   case Some(n) => println(n)
+//   case None => println("Boom! That wasn't a number.")
+// }
+
+// "100+".parseInt() match {
+//   case Some(n) => println(n)
+//   case None => println("Boom! That wasn't a number.")
+// }
+
+// "-1001".parseInt() match {
+//   case Some(n) => println(n)
+//   case None => println("Boom! That wasn't a number.")
+// }
+
+
+
+
+
+
+
+// val a = 100000L
+// assert(a.isValidByte == false)
+// assert(a.isValidShort == false)
+// assert(a.isValidInt == true)
+
+
 
 
 
