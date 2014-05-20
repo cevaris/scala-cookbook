@@ -168,9 +168,31 @@
 
 
 
-val address = "431 Main Street".replaceAll("[0-9]", "-")
-println(address)
+// val address = "431 Main Street".replaceAll("[0-9]", "-")
+// println(address)
 
+
+
+
+
+
+
+
+
+// implicit class StringUtils(s: String) {
+//   def lower = s.map(c => c.toLower)
+//   def parseBool:Boolean = s.trim.toLowerCase match {
+//     case "1" | "true" => true
+//     case _ => false
+//   }
+// }
+// println("TeST".lower)
+
+// assert("true".parseBool == true)
+// assert("True".parseBool == true)
+// assert("1 ".parseBool == true)
+// assert("Truee".parseBool == false)
+// assert("0".parseBool == false)
 
 
 
