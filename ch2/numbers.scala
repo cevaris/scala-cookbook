@@ -76,6 +76,26 @@
 //   }
 // }
 
+abstract class State
+case class Even() extends State
+case class Odd()  extends State
+
+implicit class BigIntUtils(x: BigInt) {
+
+  val even:BigInt = 0
+  val odd:BigInt  = 1
+
+  def state(): State = x % 2 match {
+    case `odd`  => Odd()
+    case `even` => Even()
+  }
+}
+
+assert(BigInt(2).state == Even())
+assert(BigInt(0).state == Even())
+assert(BigInt(1).state == Odd())
+
+
 
 def calcPi(): BigDecimal  = {
 
@@ -99,7 +119,7 @@ def calcPi(): BigDecimal  = {
 }
 
 
-calcPi()
+// calcPi()
 
 
 
