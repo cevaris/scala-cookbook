@@ -94,6 +94,7 @@ implicit class BigIntUtils(x: BigInt) {
 assert(BigInt(2).parity == Even())
 assert(BigInt(0).parity == Even())
 assert(BigInt(1).parity == Odd())
+assert(BigInt(11).parity == Odd())
 
 
 
@@ -102,16 +103,16 @@ def calcPi(): BigDecimal  = {
   val maxIterations:Int = 1*100*100*100
 
   @annotation.tailrec
-  def go(iteration:Int, position:BigInt, estimate:BigDecimal): BigDecimal = {
+  def go(iteration:BigInt, position:BigInt, estimate:BigDecimal): BigDecimal = {
     printf(s"\r$estimate")
 
     val step:BigDecimal = BigDecimal(4.0)/BigDecimal(position*(position+1)*(position+2))
 
-    iteration % 2 match {
-      case 0 => go(iteration+1, position+2, (estimate + step))
-      case 1 if iteration < maxIterations => 
+    iteration.parity match {
+      case Even() => go(iteration+1, position+2, (estimate + step))
+      case Odd() if iteration < maxIterations => 
         go(iteration+1, position+2, (estimate - step))
-      case 1 => println(); estimate 
+      case Odd() => println(); estimate 
     }
   }
 
@@ -119,7 +120,7 @@ def calcPi(): BigDecimal  = {
 }
 
 
-// calcPi()
+calcPi()
 
 
 
