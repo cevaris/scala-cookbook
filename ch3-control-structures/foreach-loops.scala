@@ -45,14 +45,36 @@
 
 
 
-implicit class BooleanUtils(left: Boolean) {
-  def and(right:Boolean): Boolean = left && right
-  def or(right:Boolean):  Boolean = left || right
-}
+// implicit class BooleanUtils(left: Boolean) {
+//   def and(right:Boolean): Boolean = left && right
+//   def or(right:Boolean):  Boolean = left || right
+// }
 
-for {
-  i <- 1 to 10 
-  if i != 4 and i % 2 == 0
-} println(i)
+// for {
+//   i <- 1 to 10 
+//   if i != 4 and i % 2 == 0
+// } println(i)
+
+
+
+
+
+
+
+// for {
+//   i <- 1 to 3
+//   j <- 1 to 5
+//   k <- 1 to 10
+// } println(s"i = $i, j = $j, k = $k")
+
+
+val data = for {
+  i <- 1 to 3
+  j <- 1 to 5
+    if i != 1 && j != 1
+    k <- 1 to 10
+} yield List(i,j,k)
+
+println(data)
 
 
