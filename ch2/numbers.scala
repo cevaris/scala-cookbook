@@ -64,26 +64,26 @@
 
 def calcPi(): BigDecimal  = {
 
-  val stop:Int = 1*100*100
+  val maxIterations:Int = 1*100*100*100
 
   @annotation.tailrec
-  def go(iter:Int, position:BigInt, estimate:BigDecimal): BigDecimal = {
-    // if(iter >= stop) 
-    //   return estimate
-    // else
+  def go(iteration:Int, position:BigInt, estimate:BigDecimal): BigDecimal = {
     printf(s"\r$estimate")
 
     val step:BigDecimal = BigDecimal(4.0)/BigDecimal(position*(position+1)*(position+2))
 
-    iter % 2 match {
-      case 0 => go(iter+1, position+2, (estimate += step))
-      case _ if iter >= stop => estimate
-      case _ => go(iter+1, position+2, (estimate -= step))
+    iteration % 2 match {
+      case 0 => go(iteration+1, position+2, (estimate + step))
+      case 1 if iteration < maxIterations => 
+        go(iteration+1, position+2, (estimate - step))
+      case 1 => println(); estimate 
     }
   }
 
   go(0, 2, BigDecimal(3))
 }
+
+
 calcPi()
 
 
