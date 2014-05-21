@@ -58,69 +58,75 @@
 
 
 
+// abstract class Parity
+// case class Even() extends Parity
+// case class Odd()  extends Parity
 
-// object MathUtils {
-//   def ~=(x: Double, y: Double, precision: Double) = {
-//   if ((x - y).abs < precision) true else false 42 | Chapter 2: Numbers
-//   ￼www.it-ebooks.info
-//   } 
-// }
+// implicit class BigIntUtils(x: BigInt) {
 
-// case class Odd(x:BigInt)
-// case class Even(x:BigInt)
+//   val even:BigInt = 0
+//   val odd:BigInt  = 1
 
-// object Numbers {
-//   def state(x: BigInt): BigInt = x % 2 match {
-//     case 0 => Even(x)
-//     case 1 => Odd(x)
+//   def parity(): Parity = x % 2 match {
+//     case `odd`  => Odd()
+//     case `even` => Even()
 //   }
 // }
 
-abstract class Parity
-case class Even() extends Parity
-case class Odd()  extends Parity
-
-implicit class BigIntUtils(x: BigInt) {
-
-  val even:BigInt = 0
-  val odd:BigInt  = 1
-
-  def parity(): Parity = x % 2 match {
-    case `odd`  => Odd()
-    case `even` => Even()
-  }
-}
-
-assert(BigInt(2).parity == Even())
-assert(BigInt(0).parity == Even())
-assert(BigInt(1).parity == Odd())
-assert(BigInt(11).parity == Odd())
+// assert(BigInt(2).parity == Even())
+// assert(BigInt(0).parity == Even())
+// assert(BigInt(1).parity == Odd())
+// assert(BigInt(11).parity == Odd())
 
 
+// abstract class Parity
+// case class Even() extends Parity
+// case class Odd()  extends Parity
 
-def calcPi(): BigDecimal  = {
+// implicit class BigIntUtils(x: BigInt) {
 
-  val maxIterations:Int = 1*100*100*100
+//   val even:BigInt = 0
+//   val odd:BigInt  = 1
 
-  @annotation.tailrec
-  def go(iteration:BigInt, position:BigInt, estimate:BigDecimal): BigDecimal = {
-    printf(s"\r$estimate")
+//   def parity(): Parity = x % 2 match {
+//     case `odd`  => Odd()
+//     case `even` => Even()
+//   }
+// }
 
-    val step:BigDecimal = BigDecimal(4.0)/BigDecimal(position*(position+1)*(position+2))
-
-    iteration.parity match {
-      case Even() => go(iteration+1, position+2, (estimate + step))
-      case Odd() if iteration < maxIterations => 
-        go(iteration+1, position+2, (estimate - step))
-      case Odd() => println(); estimate 
-    }
-  }
-
-  go(0, 2, BigDecimal(3))
-}
+// assert(BigInt(2).parity == Even())
+// assert(BigInt(0).parity == Even())
+// assert(BigInt(1).parity == Odd())
+// assert(BigInt(11).parity == Odd())
 
 
-calcPi()
+
+// def calcPi(): BigDecimal  = {
+
+//   val maxIterations:Int = 1*100*100*100
+
+//   @annotation.tailrec
+//   def go(iteration:BigInt, position:BigInt, estimate:BigDecimal): BigDecimal = {
+//     printf(s"\r$estimate")
+
+//     val step:BigDecimal = BigDecimal(4.0)/BigDecimal(position*(position+1)*(position+2))
+
+//     iteration.parity match {
+//       case Even() => go(iteration+1, position+2, (estimate + step))
+//       case Odd() if iteration < maxIterations => 
+//         go(iteration+1, position+2, (estimate - step))
+//       case Odd() => println(); estimate 
+//     }
+//   }
+
+//   go(0, 2, BigDecimal(3))
+// }
+
+
+// calcPi()
+
+
+
 
 
 
@@ -172,3 +178,14 @@ calcPi()
 
 
 
+
+
+val r = scala.util.Random
+r.setSeed(1002L)
+println(r.nextInt)
+
+var range = 0 to r.nextInt(10)
+println(range)
+
+var randRange = for (i <- 0 to r.nextInt(10)) yield (i * r.nextFloat)
+println(randRange)
