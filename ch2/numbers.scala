@@ -76,24 +76,24 @@
 //   }
 // }
 
-abstract class State
-case class Even() extends State
-case class Odd()  extends State
+abstract class Parity
+case class Even() extends Parity
+case class Odd()  extends Parity
 
 implicit class BigIntUtils(x: BigInt) {
 
   val even:BigInt = 0
   val odd:BigInt  = 1
 
-  def state(): State = x % 2 match {
+  def parity(): Parity = x % 2 match {
     case `odd`  => Odd()
     case `even` => Even()
   }
 }
 
-assert(BigInt(2).state == Even())
-assert(BigInt(0).state == Even())
-assert(BigInt(1).state == Odd())
+assert(BigInt(2).parity == Even())
+assert(BigInt(0).parity == Even())
+assert(BigInt(1).parity == Odd())
 
 
 
