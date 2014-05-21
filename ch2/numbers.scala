@@ -59,7 +59,22 @@
 
 
 
+// object MathUtils {
+//   def ~=(x: Double, y: Double, precision: Double) = {
+//   if ((x - y).abs < precision) true else false 42 | Chapter 2: Numbers
+//   ￼www.it-ebooks.info
+//   } 
+// }
 
+// case class Odd(x:BigInt)
+// case class Even(x:BigInt)
+
+// object Numbers {
+//   def state(x: BigInt): BigInt = x % 2 match {
+//     case 0 => Even(x)
+//     case 1 => Odd(x)
+//   }
+// }
 
 
 def calcPi(): BigDecimal  = {
